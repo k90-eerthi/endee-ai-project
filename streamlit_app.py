@@ -5,6 +5,8 @@ import numpy as np
 
 st.title("AI Semantic Search")
 
+st.write("Type a query to find the most relevant document.")
+
 # Load documents
 with open("documents.txt", "r") as f:
     documents = f.readlines()
@@ -12,11 +14,16 @@ with open("documents.txt", "r") as f:
 documents = [d.strip() for d in documents]
 
 # Load model
-model = SentenceTransformer("all-MiniLM-L6-v2")
+@st.cache_resource
+def load_model():
+    return SentenceTransformer("all-MiniLM-L6-v2")
 
+model = load_model()
+
+# Create embeddings
 doc_embeddings = model.encode(documents)
 
-query = st.text_input("Enter your search query")
+query = st.text_input("Enter your search query:")
 
 if query:
     query_embedding = model.encode([query])
