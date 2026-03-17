@@ -48,3 +48,16 @@ Machine learning engineer jobs
 
 ## Reference
 https://github.com/endee-io/endee
+# AI Semantic Search Project
+
+This project implements a simple semantic search system using sentence embeddings.
+
+Users can enter a search query and the system returns the most relevant document based on meaning.
+
+## Installation
+
+pip install -r requirements.txt
+
+## Run
+
+python app.py
