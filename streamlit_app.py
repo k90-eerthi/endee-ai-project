@@ -1,7 +1,7 @@
 import streamlit as st
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+from sentence_transformers import SentenceTransformer
 
 st.title("AI Semantic Search")
 
@@ -16,6 +16,8 @@ documents = [d.strip() for d in documents]
 query = st.text_input("Enter your search query:")
 
 if query:
+
+    st.write("Loading AI model... please wait ⏳")
 
     model = SentenceTransformer("all-MiniLM-L6-v2")
 
