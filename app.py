@@ -1,25 +1,30 @@
 from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
 # Load documents
-with open("documents.txt","r") as f:
-    documents = f.readlines()
+with open("documents.txt", "r") as file:
+    documents = file.readlines()
 
-documents = [d.strip() for d in documents]
+documents = [doc.strip() for doc in documents]
 
-# Load AI model
+# Load model
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-# Convert documents to vectors
-doc_vectors = model.encode(documents)
+# Convert documents to embeddings
+doc_embeddings = model.encode(documents)
 
-query = input("Enter your search: ")
+# Ask user query
+query = input("Enter your search query: ")
 
-query_vector = model.encode([query])
+# Convert query to embedding
+query_embedding = model.encode([query])
 
-similarities = np.dot(doc_vectors, query_vector.T)
+# Calculate similarity
+similarities = cosine_similarity(query_embedding, doc_embeddings)[0]
 
-best_match = np.argmax(similarities)
+# Get best result
+best_index = np.argmax(similarities)
 
-print("Best Result:")
-print(documents[best_match])
+print("\nMost Relevant Document:")
+print(documents[best_index])
