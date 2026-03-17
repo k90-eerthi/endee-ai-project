@@ -13,21 +13,18 @@ with open("documents.txt", "r") as f:
 
 documents = [d.strip() for d in documents]
 
-# Load model
-@st.cache_resource
-def load_model():
-    return SentenceTransformer("all-MiniLM-L6-v2")
-
-model = load_model()
-
-# Create embeddings
-doc_embeddings = model.encode(documents)
-
 query = st.text_input("Enter your search query:")
 
 if query:
+
+    model = SentenceTransformer("all-MiniLM-L6-v2")
+
+    doc_embeddings = model.encode(documents)
+
     query_embedding = model.encode([query])
+
     similarities = cosine_similarity(query_embedding, doc_embeddings)[0]
+
     best_index = np.argmax(similarities)
 
     st.subheader("Best Result:")
