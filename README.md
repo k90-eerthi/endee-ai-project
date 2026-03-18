@@ -1,14 +1,17 @@
 # AI Semantic Search using Vector Embeddings
 
 ## Project Overview
-This project demonstrates an AI semantic search system using vector embeddings. 
+
+This project demonstrates an AI semantic search system using vector embeddings.
 The system retrieves the most relevant document based on the meaning of a user query.
 
 ## Objective
-The objective of this project is to demonstrate how vector search can power AI 
+
+The objective of this project is to demonstrate how vector search can power AI
 applications such as semantic search, recommendation systems, and document retrieval.
 
 ## Technologies Used
+
 - Python
 - Sentence Transformers
 - NumPy
@@ -41,13 +44,16 @@ Output:
 Machine learning engineer jobs
 
 ## Use Cases
+
 - AI document search
 - Resume search systems
 - Knowledge base retrieval
 - AI chatbots
 
 ## Reference
+
 https://github.com/endee-io/endee
+
 # AI Semantic Search Project
 
 This project implements a simple semantic search system using sentence embeddings.
@@ -61,3 +67,7 @@ pip install -r requirements.txt
 ## Run
 
 python app.py
+
+## Application Preview
+
+![App Screenshot](screenshot.png)
